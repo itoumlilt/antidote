@@ -93,10 +93,205 @@ online-store-test:
 	$(REBAR) skip_deps=true riak_test_compile
 	../riak_test/riak_test -v -c antidote -t online_store_test
 
+
 wallet-test:
 	$(REBAR) skip_deps=true riak_test_compile
-	../riak_test/riak_test -v -c antidote -t wallet_test
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{110, 220, 340}" -t wallet_test
+
+
+
+wallet-delay0-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_delay_scheduler 0 -t wallet_test
+
+wallet-delay1-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_delay_scheduler 1 -t wallet_test
+
+wallet-delay2-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_delay_scheduler 2 -t wallet_test
+
+wallet-random10-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{210, 235,280}" -t wallet_test
+
+wallet-random11-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{330, 440, 550}" -t wallet_test
+
+wallet-random12-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{320, 420, 520}" -t wallet_test
+
+wallet-random13-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{1, 101, 301}" -t wallet_test
+
+wallet-random14-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{400, 450, 500}" -t wallet_test
+
+wallet-random15-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{260, 580, 850}" -t wallet_test
+
+wallet-random16-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{630, 520, 410}" -t wallet_test
+
+wallet-random17-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{999, 750, 300}" -t wallet_test
+
+wallet-random18-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{15, 27, 38}" -t wallet_test
+
+wallet-random19-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{1, 2, 3}" -t wallet_test
+
+wallet-random20-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{32, 42, 52}" -t wallet_test
+
+
+
+b2b-order-delay0-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_delay_scheduler 0 -t b2b_orders_test
+
+b2b-order-delay1-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_delay_scheduler 1 -t b2b_orders_test
+
+b2b-order-delay2-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_delay_scheduler 2 -t b2b_orders_test
+
+b2b-order-random0-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{120, 460, 680}" -t b2b_orders_test
+
+b2b-order-random1-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{330, 440, 550}" -t b2b_orders_test
+
+b2b-order-random2-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{11, 25, 38}" -t b2b_orders_test
+
+b2b-order-random3-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{320, 420, 520}" -t b2b_orders_test
+
+b2b-order-random4-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{1, 101, 301}" -t b2b_orders_test
+
+b2b-order-random5-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{400, 450, 500}" -t b2b_orders_test
+
+b2b-order-random6-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{260, 580, 850}" -t b2b_orders_test
+
+b2b-order-random7-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{630, 520, 410}" -t b2b_orders_test
+
+b2b-order-random8-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{999, 750, 300}" -t b2b_orders_test
+
+b2b-order-random9-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{15, 27, 38}" -t b2b_orders_test
+
+b2b-order-random10-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{1, 2, 3}" -t b2b_orders_test
+
+b2b-order-random11-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{32, 42, 52}" -t b2b_orders_test
+
+
 
 ad-counter-test:
 	$(REBAR) skip_deps=true riak_test_compile
 	../riak_test/riak_test -v -c antidote -t ad_counter_test
+
+ad-counter-delay0-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_delay_scheduler 0 -t ad_counter_test
+
+ad-counter-delay1-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_delay_scheduler 1 -t ad_counter_test
+
+ad-counter-delay2-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_delay_scheduler 2 -t ad_counter_test
+
+ad-counter-random6-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{110, 220, 280}" -t ad_counter_test
+
+ad-counter-random7-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{110, 220, 340}" -t ad_counter_test
+
+ad-counter-random8-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{210, 235,280}" -t ad_counter_test
+
+ad-counter-random9-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{11, 25, 38}" -t ad_counter_test
+
+ad-counter-random10-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{120, 460, 680}" -t ad_counter_test
+
+ad-counter-random11-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{330, 440, 550}" -t ad_counter_test
+
+ad-counter-random12-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{320, 420, 520}" -t ad_counter_test
+
+ad-counter-random13-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{1, 101, 301}" -t ad_counter_test
+
+ad-counter-random14-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{400, 450, 500}" -t ad_counter_test
+
+ad-counter-random15-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{260, 580, 850}" -t ad_counter_test
+
+ad-counter-random16-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{630, 520, 410}" -t ad_counter_test
+
+ad-counter-random17-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{999, 750, 300}" -t ad_counter_test
+
+ad-counter-random18-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{15, 27, 38}" -t ad_counter_test
+
+ad-counter-random19-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{1, 2, 3}" -t ad_counter_test
+
+ad-counter-random20-test:
+	$(REBAR) skip_deps=true riak_test_compile
+	../riak_test/riak_test -v -c antidote comm_random_scheduler "{32, 42, 52}" -t ad_counter_test
