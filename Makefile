@@ -22,12 +22,19 @@ shell:
 # same as shell, but automatically reloads code when changed
 # to install add `{plugins, [rebar3_auto]}.` to ~/.config/rebar3/rebar.config
 # the tool requires inotifywait (sudo apt install inotify-tools)
-# see https://github.com/vans163/rebar3_auto or http://blog.erlware.org/rebar3-auto-comile-and-load-plugin/ 
+# see https://github.com/vans163/rebar3_auto or http://blog.erlware.org/rebar3-auto-comile-and-load-plugin/
 auto:
 	$(REBAR) auto --name='antidote@127.0.0.1' --setcookie antidote --config config/sys-debug.config
 
+DEVNODES ?= 2
+
+SEQ = $(shell awk 'BEGIN { for (i = 1; i < '$(DEVNODES)'; i++) printf("%i ", i); print i ;exit(0);}')
+
+noderel :
+	$(foreach i,$(SEQ),$(REBAR) release -n antidote$i &&) true
+
 rel:
-	$(REBAR) release
+	$(REBAR) release -n antidote
 
 relclean:
 	rm -rf _build/default/rel
@@ -58,7 +65,7 @@ foreground: rel
 	./_build/default/rel/antidote/bin/env foreground
 
 console: rel
-	./_build/default/rel/antidote/bin/env console
+	INSTANCE_NAME=antidote ./_build/default/rel/antidote/bin/env console
 
 mesos-docker-build:
 	docker build -f Dockerfiles/antidote-mesos -t cmeiklejohn/antidote-mesos .
