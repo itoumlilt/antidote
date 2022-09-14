@@ -1,6 +1,6 @@
 REBAR = $(shell pwd)/rebar3
 COVERPATH = $(shell pwd)/_build/test/cover
-.PHONY: rel test relgentlerain docker-build docker-run
+.PHONY: rel test docker-build docker-run
 
 all: compile
 
@@ -31,11 +31,9 @@ reltest: rel
 # style checks
 lint:
 	${REBAR} lint
+	${REBAR} fmt --check
 
 check: distclean test reltest dialyzer lint
-
-relgentlerain: export TXN_PROTOCOL=gentlerain
-relgentlerain: relclean rel
 
 relnocert: export NO_CERTIFICATION=true
 relnocert: relclean rel
@@ -46,21 +44,24 @@ stage :
 test:
 	${REBAR} eunit
 
+proper:
+	${REBAR} proper
+
 coverage:
 	${REBAR} cover --verbose
 
 singledc:
 ifdef SUITE
-	${REBAR} ct --dir test/singledc --suite ${SUITE}
+	${REBAR} ct --dir apps/antidote/test/singledc --suite ${SUITE}
 else
-	${REBAR} ct --dir test/singledc --cover_export_name=singledc
+	${REBAR} ct --dir apps/antidote/test/singledc --cover_export_name=singledc
 endif
 
 multidc: 
 ifdef SUITE
-	${REBAR} ct --dir test/multidc --suite ${SUITE}
+	${REBAR} ct --dir apps/antidote/test/multidc --suite ${SUITE}
 else
-	${REBAR} ct --dir test/multidc --cover_export_name=multidc
+	${REBAR} ct --dir apps/antidote/test/multidc --cover_export_name=multidc
 
 endif
 
